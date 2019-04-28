@@ -1,5 +1,35 @@
 [
   {
+    "path": "posts/2019-04-27-spotifyr-application/",
+    "title": "Spotifyr application",
+    "description": "Spotifyr application",
+    "author": [
+      {
+        "name": "Jean-Pierre Amoakon",
+        "url": "https://example.com/norajones"
+      }
+    ],
+    "date": "2019-04-27",
+    "categories": [],
+    "preview": "posts/2019-04-27-spotifyr-application/spotifyr-application_files/figure-html5/unnamed-chunk-6-1.png",
+    "last_modified": "2019-04-28T01:46:14-04:00"
+  },
+  {
+    "path": "posts/2019-04-24-spotifyr-tutorial/",
+    "title": "Spotifyr Tutorial: getting started",
+    "description": "Spotifyr tutorial",
+    "author": [
+      {
+        "name": "Jean-Pierre Amoakon",
+        "url": "https://github.com/jamoakon/CSC405BlogJP.git"
+      }
+    ],
+    "date": "2019-04-24",
+    "categories": [],
+    "preview": {},
+    "last_modified": "2019-04-28T02:18:37-04:00"
+  },
+  {
     "path": "posts/2019-04-17-sophisticated-ananlysis/",
     "title": "Sophisticated Ananlysis",
     "description": "Analysis of sophisticated things.\nA short description of the post.",
@@ -12,7 +42,7 @@
     "date": "2019-04-17",
     "categories": [],
     "preview": "posts/2019-04-17-sophisticated-ananlysis/sophisticated-ananlysis_files/figure-html5/unnamed-chunk-1-1.png",
-    "last_modified": "2019-04-17T13:45:49-04:00"
+    "last_modified": "2019-04-24T13:10:05-04:00"
   },
   {
     "path": "posts/welcome/",
@@ -27,6 +57,6 @@
     "date": "2019-04-17",
     "categories": [],
     "preview": {},
-    "last_modified": "2019-04-17T13:09:58-04:00"
+    "last_modified": "2019-04-24T13:10:05-04:00"
   }
 ]

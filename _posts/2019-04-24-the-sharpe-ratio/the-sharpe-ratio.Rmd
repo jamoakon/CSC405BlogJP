@@ -1,0 +1,29 @@
+---
+title: "The Sharpe Ratio"
+description: |Key words here
+  A short description of the post.
+author:
+  - name: Jean-Pierre Amoakon
+    url: https://example.com/norajones URL for blog here
+date: 04-24-2019
+output:
+  distill::distill_article:
+    self_contained: false
+---
+
+```{r setup, include=FALSE, warning = false, message=false}
+library(mdsr)
+library(distill)
+knitr::opts_chunk$set(echo = TRUE)
+
+```
+
+```{r preview = TRUE}
+ggplot (iris, aes(x = Sepal.Width, y))
+```
+
+
+Distill is a publication format for scientific and technical writing, native to the web.
+
+Learn more about using Distill at <https://rstudio.github.io/distill>.
+
