@@ -1,5 +1,5 @@
 ---
-title: "Spotifyr Tutorial: getting started"
+title: "Spotifyr Tutorial: Getting Started"
 description: |
     Spotifyr tutorial
 author:
@@ -23,7 +23,7 @@ library(rmarkdown)
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## Overview (From the author)
+## Overview (From the spotifyr author)
 
 spotifyr is a wrapper for pulling track audio features and other information from Spotify’s Web API in bulk. By automatically batching API requests, it allows you to enter an artist’s name and retrieve their entire discography in seconds, along with Spotify’s audio features and track/album popularity metrics. You can also pull song and playlist information for a given Spotify User (including yourself!).
 
@@ -33,36 +33,40 @@ CRAN version 2.1.0 (recommended)
 
 Two options to install the package:
 
-1) you could run a simple R command in your console:
+1) Run a simple R command in console:
 
 ```{r, eval=FALSE}
 install.packages('spotifyr')
 ```
 
-2)Or you could install from the packages tab:
+2) Install from the packages tab:
 
- -Go to the “Packages” tab, click on "install"
- -Install from : Repository (CRAN)
- -In the packages tab, type spotifyr
- -In the library tab, select the destination where you want the pakage to be      installed
+* Go to “Packages” tab, click on "install"
+* Install from : Repository (CRAN)
+* In the packages tab, type spotifyr
+* In the library tab, select the destination where you want the pakage to be      installed
  
-The package should not require any other packages to install and should now appear in your user library.
+The package should not require any other packages to install and should now appear in the user library.
 
 ## Authentication
 
 Spotifyr requires some authentication from the spotify API. To get authentication, do the following:
 
--Go to your dashboard at https://developer.spotify.com/dashboard/applications and sign in or create a free spotify account.You can create a free account at https://www.spotify.com/us/.
+* Go to your dashboard at https://developer.spotify.com/dashboard/applications and sign in or create a free spotify account.You can create a free account at https://www.spotify.com/us/.
 
--On your dashboard click CREATE A CLIENT ID.
+* On your dashboard click CREATE A CLIENT ID.
 
--Enter Application Name and Application Description and then click CREATE.
+* Enter Application Name, Application Description, and say what is being built.
 
--At the question “What are you building," pick the choice that best fit what type of app you are trying to build.
--Click CREATE
--Your application is registered, and the app view opens.
--On the app view, click Edit Settings to view and update your app settings.
--Get your Client ID and Client Secret. Once you have those, you can pull your access token into R with get_spotify_access_token()
+* Click CREATE
+
+* Your application is registered, and the app view opens.
+
+* On the app view, click Edit Settings to view and update your app settings.
+
+* Get Client ID and Client Secret. 
+
+* Get access token into R with get_spotify_access_token()
 
 The easiest way to authenticate is to set your credentials to the System Environment variables SPOTIFY_CLIENT_ID and SPOTIFY_CLIENT_SECRET. The default arguments to get_spotify_access_token() (and all other functions in this package) will refer to those.
 
@@ -73,13 +77,13 @@ Sys.setenv(SPOTIFY_CLIENT_SECRET = '33b2241bc4b74388909a355ac19a9504')
 access_token <- get_spotify_access_token()
 ```
 
-Now you are authenticated and can run spotify commands that do not require you to log in as a user.
+You are now authenticated.
 
 ## Authorization
 
-For certain functions and applications, you’ll need to log in as a Spotify user. To do so, your Spotify Developer application needs to have a callback url. Go to your app setting and set a callback URL. You can set this to whatever you want that will work with your application, but a good default option is http://localhost:1410/. For more information on authorization, visit the offical Spotify Developer Guide at https://developer.spotify.com/documentation/general/guides/authorization-guide/.
+For certain functions and applications, you’ll need to log in as a Spotify user. To do so, your Spotify Developer application needs to have a callback url. Go to your app setting and set a callback URL. You can set this to anything will work with your application, but a good default option is http://localhost:1410/. For more information on authorization, visit the offical Spotify Developer Guide at https://developer.spotify.com/documentation/general/guides/authorization-guide/.
 
-Now, run this code to obtain authorization:
+Run this code to obtain authorization:
 
 ```{r}
 authorization = get_spotify_authorization_code()
@@ -87,17 +91,15 @@ authorization = get_spotify_authorization_code()
 
 You are now logged in as a user.
 
-## Examples of what you can do with spotifyr
+## Examples of what you can do with spotifyr without being logged in as a user (no authorization required).
 
-### What was The Rolling Stones’ most energetic tracks?
-
-Does not require to be logged in as a user (authorization).
+### What were The Rolling Stones’ most energetic tracks?
 
 ```{r}
 rolling_stones <- get_artist_audio_features('the rolling stones')
 ```
 
-```{r}
+```{r, layout="l-body-outset"}
 rolling_stones %>% 
     select(energy, track_name) %>%
     arrange(desc(energy)) %>%
@@ -105,9 +107,40 @@ rolling_stones %>%
     paged_table
 ```
 
-### Get the artists you follow
+### What are the albums by your favorite artist?
 
-Requires to be logged in as a user (authorization).
+Run code below to get artist ID:
+
+```{r, eval=FALSE}
+search_spotify(q ="twenty one pilots", type = "artist" )
+```
+
+Then, run this code to get artists albums:
+
+```{r}
+pilots21 <- "3YQKmKGau1PzlVlkL1iodx"
+
+get_artist_albums(pilots21, include_groups = c("album", "single")) %>% 
+  select(name, release_date,total_tracks, type) %>% 
+  paged_table()
+
+```
+
+### What are your favorite artists top tracks by country?
+
+```{r, layout="l-body-outset"}
+pilots21 <- "3YQKmKGau1PzlVlkL1iodx"
+
+get_artist_top_tracks(pilots21, market = "US") %>% 
+  select(name, popularity, track_number, album.name,album.release_date) %>% 
+  paged_table
+
+```
+
+
+## Examples of what you can do with spotifyr that require to be logged in as a user (authorization required).
+
+### Get the artists you follow
 
 ```{r}
 get_my_followed_artists(limit = 5) %>%
@@ -116,22 +149,17 @@ get_my_followed_artists(limit = 5) %>%
   
 ```
 
+### Get your new releases
 
-### Get your most recently played tracks
-
-Requires to be logged in as a user (authorization).
-
-```{r}
-get_my_recently_played(limit = 5) %>% 
-    mutate(artist.name = map_chr(track.artists, function(x) x$name[1]),
-           played_at = as_datetime(played_at)) %>% 
-    select(track.name, artist.name, track.album.name, played_at) %>% 
-    paged_table
+```{r, layout="l-body-outset"}
+get_new_releases(limit = 5) %>% 
+    select(name,
+           release_date, total_tracks, type) %>%
+    rowwise() %>%
+    paged_table()
 ```
 
 ### Find your all time favorite artists
-
-Requires to be logged in as a user (authorization).
 
 ```{r}
 get_my_top_artists_or_tracks(type = 'artists', time_range = 'long_term', limit = 5) %>% 
@@ -142,7 +170,7 @@ get_my_top_artists_or_tracks(type = 'artists', time_range = 'long_term', limit =
     paged_table()
 ```
 
-Check out the documentation for package 'spotifyr'version 2.1.0 for a list of all the spotifyr functions.
+Refer to the R Documentation for package 'spotifyr'version 2.1.0 for a list of all the spotifyr functions.
 
 ## References {.appendix}
 

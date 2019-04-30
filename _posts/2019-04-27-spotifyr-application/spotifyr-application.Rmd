@@ -1,5 +1,5 @@
 ---
-title: "Spotifyr application"
+title: "Spotifyr Application"
 description: |
     Spotifyr application
 author:
@@ -25,9 +25,9 @@ library(rmarkdown)
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-#Who and what were people listening to?
+# Who and what were people listening to?
 
-Let's compare how musical taste changed over the last three decades. Let's find who were the top 5 most popular artists in the 1990's, 2000's and 2010's, what their musical genres were, how popular and many followers they have on spotify and some features about their music, such as energy, danceability, speechiness and tempo.
+Let's compare how musical taste changed over the last three decades. Let's find who were the top 5 most popular artists in the 1990's, 2000's and 2010's, what their musical genres were, how popular and how many followers they have on spotify, and also some features about their music such as energy, danceability, speechiness and tempo.
 
 ## Let's start by authenticating
 
@@ -38,8 +38,9 @@ Sys.setenv(SPOTIFY_CLIENT_SECRET = '33b2241bc4b74388909a355ac19a9504')
 access_token <- get_spotify_access_token()
 ```
 
+## Top 5 most popular artists per decade
 
-## Top 5 most popular artists in the 1990's
+### Top 5 most popular artists in the 1990's
 
 According to rateyourmusic.com and based on number of hits and weeks charted, the top 5 artists in the 1990s are:
 
@@ -49,17 +50,17 @@ According to rateyourmusic.com and based on number of hits and weeks charted, th
 4. Whitney Houston
 5. R Kelly.
 
-##Top 5 most popular artists in the 2000's
+### Top 5 most popular artists in the 2000's
 
 According to top40weekly.com, the top 5 artists in the 2000's are:
 
-1. Outkast 
+1. OutKast 
 2. Eminem
 3. Colplay
 4. Radiohead
 5. Kanye West
 
-## Top 5 most popular artists in the 2010's
+### Top 5 most popular artists in the 2010's
 
 According to the music-streaming service Spotify that launched almost 10 years ago and redefined how we listen to music, the top 5 artists of the 2010's are:
 
@@ -69,16 +70,13 @@ According to the music-streaming service Spotify that launched almost 10 years a
 4. The Weeknd
 5. Rihanna
 
-## What is their popularity and how many spotify followers do they have as of today?
+## What are their popularity indexes and how many spotify followers do they have as of today?
 
-use function "search_spotify()" to search for artist ID:
-
-For example, to find Madonna's ID:
+use function "search_spotify()" to search for artist ID. For example:
 
 ```{r, eval=FALSE}
 search_spotify(q ="madonna", type = "artist" )
 ```
-
 
 ### 1990s
 
@@ -133,7 +131,7 @@ artists_1990_followers <- data.table(artists = c("Madonna",
                                     )
 ```
 
-```{r}
+```{r, preview=TRUE}
 artists_1990_followers %>%
   ggplot(aes(x= artists, y= popularity))+
   geom_bar(stat = "identity")+
@@ -150,7 +148,9 @@ artists_1990_followers %>%
 
 ### 2000's
 
-```{r}
+Similar code as previously.
+
+```{r, echo = FALSE}
 outkast <- "1G9G7WwrXka3Z1r7aIDjI7"
 eminem <- "7dGJo4pcD2V6oG8kP0tJRR"
 coldplay <- "4gzpq5DPGxSnKTe4SA8HAU"
@@ -159,7 +159,7 @@ kanye_west <- "5K4W6rqBFWDnAN6FQUkS6x"
 
 ```
 
-```{r}
+```{r, echo = FALSE}
 Outkast <- get_artist(outkast)
 Outkast_followers <- Outkast$followers$total
 Outkast_popularity <- Outkast$popularity
@@ -181,7 +181,7 @@ Kanye_west_followers <- Kanye_west$followers$total
 Kanye_west_popularity <- Kanye_west$popularity
 ```
 
-```{r}
+```{r, echo = FALSE}
 artists_2000_followers <- data.table(artists = c("OutKast", 
                                                  "Eminem",
                                                  "Coldplay",
@@ -202,14 +202,14 @@ artists_2000_followers <- data.table(artists = c("OutKast",
                                     )
 ```
 
-```{r}
+```{r, echo = FALSE}
 artists_2000_followers %>%
   ggplot(aes(x= artists, y= popularity))+
   geom_bar(stat = "identity")+
   labs(x="Artists",y= "Popularity")
 ```
 
-```{r}
+```{r, echo = FALSE}
 artists_2000_followers %>%
   ggplot(aes(x= artists, y= followers))+
   geom_bar(stat = "identity")+
@@ -218,7 +218,7 @@ artists_2000_followers %>%
 
 ### 2010's
 
-```{r}
+```{r, echo = FALSE}
 drake <- "3TVXtAsR1Inumwj472S9r4"
 ed_sheeran <- "6eUKZXaKkcviH0Ku9w2n3V"
 eminem <- "7dGJo4pcD2V6oG8kP0tJRR"
@@ -227,7 +227,7 @@ rihanna <- "5pKCCKE2ajJHZ9KAiaK11H"
 
 ```
 
-```{r}
+```{r, echo = FALSE}
 Drake <- get_artist(drake)
 Drake_followers <- Drake$followers$total
 Drake_popularity <- Drake$popularity
@@ -249,7 +249,7 @@ Rihanna_followers <- Rihanna$followers$total
 Rihanna_popularity <- Rihanna$popularity
 ```
 
-```{r}
+```{r, echo = FALSE}
 artists_2000_followers <- data.table(artists = c("Drake", 
                                                  "Ed Sheeran",
                                                  "Eminem",
@@ -270,32 +270,32 @@ artists_2000_followers <- data.table(artists = c("Drake",
                                     )
 ```
 
-```{r}
+```{r, echo = FALSE}
 artists_2000_followers %>%
   ggplot(aes(x= artists, y= popularity))+
   geom_bar(stat = "identity")+
   labs(x="Artists",y= "Popularity")
 ```
 
-```{r}
+```{r, echo = FALSE}
 artists_2000_followers %>%
   ggplot(aes(x= artists, y= followers))+
   geom_bar(stat = "identity")+
   labs(x="Artists",y= "Number of followers")
 ```
 
-## What are these artists genres, in other words, what are the popular genres of these eras?
+## What are these artists genres, in other words, what are the popular genres of these decades?
 
 ### 1990's
 
-```{r}
+```{r, layout="l-body-outset"}
 Mariah_carey_genres <- Mariah_carey$genres
 Madonna_genres <- Madonna$genres
 Janet_jackson_genres <- Janet_jackson$genres
 Whitney_houston_genres <- Whitney_houston$genres
 R_kelly_genres <- R_kelly$genres
 
-artists_genres <- data.table(artists = c("Madonna", 
+artists_genres_1990 <- data.table(artists = c("Madonna", 
                                           "Mariah Carey",
                                           "Janet Jackson",
                                           "Whitney Houston",
@@ -306,9 +306,12 @@ artists_genres <- data.table(artists = c("Madonna",
                                         Whitney_houston_genres,
                                         R_kelly_genres)
                              )
-artists_genres %>% 
+artists_genres_1990 %>%
+  group_by(artists) %>% 
+  mutate(genres = paste(genres, collapse = ', ')) %>%
+  unique() %>% 
   arrange(artists) %>% 
-  datatable()
+  paged_table()
 
 ```
 
@@ -316,15 +319,16 @@ Pop was really popular in the 1990's.
 
 ### 2000's
 
+Similar code as previously.
 
-```{r}
+```{r, echo = FALSE, layout="l-body-outset"}
 Outkast_genres <- Outkast$genres
 Eminem_genres <- Eminem$genres
 Coldplay_genres <- Colplay$genres
 Radiohead_genres <- Radiohead$genres
 Kanye_west_genres <- Kanye_west$genres
 
-artists_genres <- data.table(artists = c("Outkast", 
+artists_genres_2000 <- data.table(artists = c("Outkast", 
                                           "Eminem",
                                           "Colplay",
                                           "Radiohead",
@@ -335,9 +339,12 @@ artists_genres <- data.table(artists = c("Outkast",
                                         Radiohead_genres,
                                         Kanye_west_genres)
                              )
-artists_genres %>% 
+artists_genres_2000 %>% 
+  group_by(artists) %>% 
+  mutate(genres = paste(genres, collapse = ', ')) %>%
+  unique() %>% 
   arrange(artists) %>% 
-  datatable()
+  paged_table()
 
 ```
 
@@ -345,14 +352,14 @@ Hip hop and rap became the most popular in the 2000's.
 
 ### 2010's
 
-```{r}
+```{r, echo = FALSE, layout="l-body-outset"}
 Drake_genres <- Drake$genres
 Ed_sheeran_genres <- Ed_sheeran$genres
 Eminem_genres <- Eminem$genres
 The_weeknd_genres <- The_weeknd$genres
 Rihanna_genres <- Rihanna$genres
 
-artists_genres <- data.table(artists = c("Drake", 
+artists_genres_2010 <- data.table(artists = c("Drake", 
                                           "Ed Sheeran",
                                           "Eminem",
                                           "The Weeknd",
@@ -363,9 +370,12 @@ artists_genres <- data.table(artists = c("Drake",
                                         The_weeknd_genres,
                                         Rihanna_genres)
                              )
-artists_genres %>% 
+artists_genres_2010 %>% 
+  group_by(artists) %>% 
+  mutate(genres = paste(genres, collapse = ', ')) %>%
+  unique() %>% 
   arrange(artists) %>% 
-  datatable()
+  paged_table()
 
 ```
 
@@ -405,21 +415,21 @@ pop_2010 %>%
     mutate(years= "2010s")
 ```
 
-```{r}
+```{r, layout="l-body-outset"}
 Pop_1990_2010 <- rbind(Pop_1990, Pop_2010) %>% 
                 select(years, mean_energy, mean_danceability, mean_speechiness,
                       mean_tempo)
 
-kable(Pop_1990_2010)
+paged_table(Pop_1990_2010)
 ```
 
 1990's pop has more energy and more tempo then 2010's but is less danceable and uses fewer words.
 
-Let's do the same with the rap genre of the 2000's and that of the 2010's.
-
 ### Rap
 
-```{r}
+Let's do the same with the rap genre of the 2000's and that of the 2010's.
+
+```{r, echo = FALSE}
 rap_2000 <- get_artist_audio_features('eminem')
 
 Rap_2000 <-
@@ -432,7 +442,7 @@ rap_2000 %>%
     mutate(years= "2000s")
 ```
 
-```{r}
+```{r, echo = FALSE}
 rap_2010 <- get_artist_audio_features('ed sheeran')
 
 Rap_2010 <-
@@ -445,7 +455,7 @@ rap_2010 %>%
     mutate(years= "2010s")
 ```
 
-```{r}
+```{r, echo = FALSE, layout="l-body-outset"}
 Rap_2000_2010 <- rbind(Rap_2000, Rap_2010) %>% 
                 select(years, mean_energy, mean_danceability, mean_speechiness,
                       mean_tempo)
