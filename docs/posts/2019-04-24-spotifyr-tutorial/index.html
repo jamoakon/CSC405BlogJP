@@ -1328,14 +1328,14 @@ document.addEventListener('DOMContentLoaded', function() {
 install.packages(&#39;spotifyr&#39;)</code></pre>
 </div>
 <ol start="2" type="1">
-<li>Install from the packages tab:</li>
-</ol>
+<li><p>Install from the packages tab:</p>
 <ul>
-<li>Go to “Packages” tab, click on “install”</li>
-<li>Install from : Repository (CRAN)</li>
-<li>In the packages tab, type spotifyr</li>
-<li>In the library tab, select the destination where you want the pakage to be installed</li>
-</ul>
+<li>Go to “Packages” tab, click on “install.”</li>
+<li>Install from : Repository (CRAN).</li>
+<li>In the packages tab, type spotifyr.</li>
+<li>In the library tab, select the destination where you want the pakage to be installed.</li>
+</ul></li>
+</ol>
 <p>The package should not require any other packages to install and should now appear in the user library.</p>
 <h2 id="authentication">Authentication</h2>
 <p>Spotifyr requires some authentication from the spotify API. To get authentication, do the following:</p>
@@ -1343,11 +1343,11 @@ install.packages(&#39;spotifyr&#39;)</code></pre>
 <li><p>Go to your dashboard at <a href="https://developer.spotify.com/dashboard/applications" class="uri">https://developer.spotify.com/dashboard/applications</a> and sign in or create a free spotify account.You can create a free account at <a href="https://www.spotify.com/us/" class="uri">https://www.spotify.com/us/</a>.</p></li>
 <li><p>On your dashboard click CREATE A CLIENT ID.</p></li>
 <li><p>Enter Application Name, Application Description, and say what is being built.</p></li>
-<li><p>Click CREATE</p></li>
+<li><p>Click CREATE.</p></li>
 <li><p>Your application is registered, and the app view opens.</p></li>
 <li><p>On the app view, click Edit Settings to view and update your app settings.</p></li>
 <li><p>Get Client ID and Client Secret.</p></li>
-<li><p>Get access token into R with get_spotify_access_token()</p></li>
+<li><p>Get access token into R with get_spotify_access_token().</p></li>
 </ul>
 <p>The easiest way to authenticate is to set your credentials to the System Environment variables SPOTIFY_CLIENT_ID and SPOTIFY_CLIENT_SECRET. The default arguments to get_spotify_access_token() (and all other functions in this package) will refer to those.</p>
 <div class="layout-chunk" data-layout="l-body">
@@ -1359,7 +1359,7 @@ access_token &lt;- get_spotify_access_token()</code></pre>
 </div>
 <p>You are now authenticated.</p>
 <h2 id="authorization">Authorization</h2>
-<p>For certain functions and applications, you’ll need to log in as a Spotify user. To do so, your Spotify Developer application needs to have a callback url. Go to your app setting and set a callback URL. You can set this to anything will work with your application, but a good default option is <a href="http://localhost:1410/" class="uri">http://localhost:1410/</a>. For more information on authorization, visit the offical Spotify Developer Guide at <a href="https://developer.spotify.com/documentation/general/guides/authorization-guide/" class="uri">https://developer.spotify.com/documentation/general/guides/authorization-guide/</a>.</p>
+<p>For certain functions and applications, you’ll need to log in as a Spotify user. To do so, your Spotify Developer application needs to have a callback url. Go to your app setting and set a callback URL. You can set this to anything that will work with your application, but a good default option is <a href="http://localhost:1410/" class="uri">http://localhost:1410/</a>. For more information on authorization, visit the offical Spotify Developer Guide at <a href="https://developer.spotify.com/documentation/general/guides/authorization-guide/" class="uri">https://developer.spotify.com/documentation/general/guides/authorization-guide/</a>.</p>
 <p>Run this code to obtain authorization:</p>
 <div class="layout-chunk" data-layout="l-body">
 <pre class="r"><code>
@@ -1405,7 +1405,7 @@ get_artist_albums(pilots21, include_groups = c(&quot;album&quot;, &quot;single&q
   </script>
 </div>
 </div>
-<h3 id="what-are-your-favorite-artists-top-tracks-by-country">What are your favorite artists top tracks by country?</h3>
+<h3 id="what-are-your-favorite-artists-top-tracks-by-country">What are your favorite artists’ top tracks by country?</h3>
 <div class="layout-chunk" data-layout="l-body-outset">
 <pre class="r"><code>
 pilots21 &lt;- &quot;3YQKmKGau1PzlVlkL1iodx&quot;
@@ -1415,7 +1415,7 @@ get_artist_top_tracks(pilots21, market = &quot;US&quot;) %&gt;%
   paged_table</code></pre>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
-{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["name"],"name":[1],"type":["chr"],"align":["left"]},{"label":["popularity"],"name":[2],"type":["int"],"align":["right"]},{"label":["track_number"],"name":[3],"type":["int"],"align":["right"]},{"label":["album.name"],"name":[4],"type":["chr"],"align":["left"]},{"label":["album.release_date"],"name":[5],"type":["chr"],"align":["left"]}],"data":[{"1":"Chlorine","2":"84","3":"5","4":"Trench","5":"2018-10-05","_rn_":"1"},{"1":"Stressed Out","2":"83","3":"2","4":"Blurryface","5":"2015-05-15","_rn_":"2"},{"1":"Ride","2":"82","3":"3","4":"Blurryface","5":"2015-05-15","_rn_":"3"},{"1":"Heathens","2":"81","3":"1","4":"Heathens","5":"2016-06-16","_rn_":"4"},{"1":"My Blood","2":"78","3":"4","4":"Trench","5":"2018-10-05","_rn_":"5"},{"1":"Jumpsuit","2":"77","3":"1","4":"Trench","5":"2018-10-05","_rn_":"6"},{"1":"Nico And The Niners","2":"75","3":"9","4":"Trench","5":"2018-10-05","_rn_":"7"},{"1":"Car Radio","2":"75","3":"5","4":"Vessel","5":"2013","_rn_":"8"},{"1":"Morph","2":"75","3":"3","4":"Trench","5":"2018-10-05","_rn_":"9"},{"1":"Tear in My Heart","2":"74","3":"5","4":"Blurryface","5":"2015-05-15","_rn_":"10"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["name"],"name":[1],"type":["chr"],"align":["left"]},{"label":["popularity"],"name":[2],"type":["int"],"align":["right"]},{"label":["track_number"],"name":[3],"type":["int"],"align":["right"]},{"label":["album.name"],"name":[4],"type":["chr"],"align":["left"]},{"label":["album.release_date"],"name":[5],"type":["chr"],"align":["left"]}],"data":[{"1":"Chlorine","2":"84","3":"5","4":"Trench","5":"2018-10-05","_rn_":"1"},{"1":"Stressed Out","2":"83","3":"2","4":"Blurryface","5":"2015-05-15","_rn_":"2"},{"1":"Ride","2":"82","3":"3","4":"Blurryface","5":"2015-05-15","_rn_":"3"},{"1":"Heathens","2":"81","3":"1","4":"Heathens","5":"2016-06-16","_rn_":"4"},{"1":"My Blood","2":"77","3":"4","4":"Trench","5":"2018-10-05","_rn_":"5"},{"1":"Jumpsuit","2":"76","3":"1","4":"Trench","5":"2018-10-05","_rn_":"6"},{"1":"Nico And The Niners","2":"75","3":"9","4":"Trench","5":"2018-10-05","_rn_":"7"},{"1":"Car Radio","2":"75","3":"5","4":"Vessel","5":"2013","_rn_":"8"},{"1":"Morph","2":"74","3":"3","4":"Trench","5":"2018-10-05","_rn_":"9"},{"1":"Tear in My Heart","2":"74","3":"5","4":"Blurryface","5":"2015-05-15","_rn_":"10"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
 </div>
@@ -1428,7 +1428,7 @@ get_my_followed_artists(limit = 5) %&gt;%
   paged_table</code></pre>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
-{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["name"],"name":[1],"type":["chr"],"align":["left"]},{"label":["popularity"],"name":[2],"type":["int"],"align":["right"]},{"label":["followers.total"],"name":[3],"type":["int"],"align":["right"]}],"data":[{"1":"Travis Scott","2":"94","3":"5420208","_rn_":"1"},{"1":"DJ Arafat","2":"44","3":"25784","_rn_":"2"},{"1":"Hillsong Worship","2":"78","3":"1348590","_rn_":"3"},{"1":"Drake","2":"97","3":"36070006","_rn_":"4"},{"1":"Lil Uzi Vert","2":"89","3":"6196921","_rn_":"5"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["name"],"name":[1],"type":["chr"],"align":["left"]},{"label":["popularity"],"name":[2],"type":["int"],"align":["right"]},{"label":["followers.total"],"name":[3],"type":["int"],"align":["right"]}],"data":[{"1":"Travis Scott","2":"94","3":"5449525","_rn_":"1"},{"1":"DJ Arafat","2":"43","3":"25842","_rn_":"2"},{"1":"Hillsong Worship","2":"78","3":"1353719","_rn_":"3"},{"1":"Drake","2":"97","3":"36194135","_rn_":"4"},{"1":"Lil Uzi Vert","2":"89","3":"6217365","_rn_":"5"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
 </div>
@@ -1442,7 +1442,7 @@ get_new_releases(limit = 5) %&gt;%
     paged_table()</code></pre>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
-{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["name"],"name":[1],"type":["chr"],"align":["left"]},{"label":["release_date"],"name":[2],"type":["chr"],"align":["left"]},{"label":["total_tracks"],"name":[3],"type":["int"],"align":["right"]},{"label":["type"],"name":[4],"type":["chr"],"align":["left"]}],"data":[{"1":"ME!","2":"2019-04-26","3":"1","4":"album","_rn_":"1"},{"1":"Lemonade","2":"2016-04-23","3":"13","4":"album","_rn_":"2"},{"1":"For The Throne (Music Inspired by the HBO Series Game of Thrones)","2":"2019-04-26","3":"14","4":"album","_rn_":"3"},{"1":"Gangalee","2":"2019-04-26","3":"22","4":"album","_rn_":"4"},{"1":"Stop Snitchin","2":"2019-04-24","3":"1","4":"album","_rn_":"5"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["name"],"name":[1],"type":["chr"],"align":["left"]},{"label":["release_date"],"name":[2],"type":["chr"],"align":["left"]},{"label":["total_tracks"],"name":[3],"type":["int"],"align":["right"]},{"label":["type"],"name":[4],"type":["chr"],"align":["left"]}],"data":[{"1":"If I Can't Have You","2":"2019-05-03","3":"1","4":"album","_rn_":"1"},{"1":"Homicide","2":"2019-05-03","3":"1","4":"album","_rn_":"2"},{"1":"OCEAN","2":"2019-05-03","3":"16","4":"album","_rn_":"3"},{"1":"TrapStar Turnt PopStar","2":"2019-05-03","3":"18","4":"album","_rn_":"4"},{"1":"Joy","2":"2019-05-02","3":"1","4":"album","_rn_":"5"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
 </div>

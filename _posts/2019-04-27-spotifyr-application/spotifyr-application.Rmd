@@ -25,7 +25,7 @@ library(rmarkdown)
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-# Who and what were people listening to?
+# Whom and what were people listening to?
 
 Let's compare how musical taste changed over the last three decades. Let's find who were the top 5 most popular artists in the 1990's, 2000's and 2010's, what their musical genres were, how popular and how many followers they have on spotify, and also some features about their music such as energy, danceability, speechiness and tempo.
 
@@ -48,7 +48,7 @@ According to rateyourmusic.com and based on number of hits and weeks charted, th
 2. Madonna
 3. Janet Jackson
 4. Whitney Houston
-5. R Kelly.
+5. R Kelly
 
 ### Top 5 most popular artists in the 2000's
 

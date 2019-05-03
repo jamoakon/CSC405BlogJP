@@ -41,10 +41,10 @@ install.packages('spotifyr')
 
 2) Install from the packages tab:
 
-* Go to “Packages” tab, click on "install"
-* Install from : Repository (CRAN)
-* In the packages tab, type spotifyr
-* In the library tab, select the destination where you want the pakage to be      installed
+    * Go to “Packages” tab, click on "install."
+    * Install from : Repository (CRAN).
+    * In the packages tab, type spotifyr.
+    * In the library tab, select the destination where you want the pakage to be installed.
  
 The package should not require any other packages to install and should now appear in the user library.
 
@@ -58,7 +58,7 @@ Spotifyr requires some authentication from the spotify API. To get authenticatio
 
 * Enter Application Name, Application Description, and say what is being built.
 
-* Click CREATE
+* Click CREATE.
 
 * Your application is registered, and the app view opens.
 
@@ -66,7 +66,7 @@ Spotifyr requires some authentication from the spotify API. To get authenticatio
 
 * Get Client ID and Client Secret. 
 
-* Get access token into R with get_spotify_access_token()
+* Get access token into R with get_spotify_access_token().
 
 The easiest way to authenticate is to set your credentials to the System Environment variables SPOTIFY_CLIENT_ID and SPOTIFY_CLIENT_SECRET. The default arguments to get_spotify_access_token() (and all other functions in this package) will refer to those.
 
@@ -81,7 +81,7 @@ You are now authenticated.
 
 ## Authorization
 
-For certain functions and applications, you’ll need to log in as a Spotify user. To do so, your Spotify Developer application needs to have a callback url. Go to your app setting and set a callback URL. You can set this to anything will work with your application, but a good default option is http://localhost:1410/. For more information on authorization, visit the offical Spotify Developer Guide at https://developer.spotify.com/documentation/general/guides/authorization-guide/.
+For certain functions and applications, you’ll need to log in as a Spotify user. To do so, your Spotify Developer application needs to have a callback url. Go to your app setting and set a callback URL. You can set this to anything that will work with your application, but a good default option is http://localhost:1410/. For more information on authorization, visit the offical Spotify Developer Guide at https://developer.spotify.com/documentation/general/guides/authorization-guide/.
 
 Run this code to obtain authorization:
 
@@ -126,7 +126,7 @@ get_artist_albums(pilots21, include_groups = c("album", "single")) %>%
 
 ```
 
-### What are your favorite artists top tracks by country?
+### What are your favorite artists' top tracks by country?
 
 ```{r, layout="l-body-outset"}
 pilots21 <- "3YQKmKGau1PzlVlkL1iodx"
